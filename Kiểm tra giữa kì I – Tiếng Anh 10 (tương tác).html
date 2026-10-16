@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kiểm tra giữa kì I – Tiếng Anh 10</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef2f7;--card:#fff;--ink:#16243a;--mute:#5d6b80;--line:#d3dbe6;--acc:#1d4ed8;--accbg:#e4ecff;--ok:#17703f;--okbg:#e0f3e8;--bad:#b42318;--badbg:#fde8e6;--on:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1624;--card:#18223a;--ink:#e8edf6;--mute:#9aa8bf;--line:#2c3a57;--acc:#7da2ff;--accbg:#22315a;--ok:#5fd093;--okbg:#17342a;--bad:#ff8a80;--badbg:#3b1f22;--on:#0f1624}}
+:root[data-theme="dark"]{--bg:#0f1624;--card:#18223a;--ink:#e8edf6;--mute:#9aa8bf;--line:#2c3a57;--acc:#7da2ff;--accbg:#22315a;--ok:#5fd093;--okbg:#17342a;--bad:#ff8a80;--badbg:#3b1f22;--on:#0f1624}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Be Vietnam Pro",system-ui,sans-serif}
+main{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;line-height:1.3;margin:.2em 0 .4em}h2{font-size:1.15rem;margin:1.4em 0 .6em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:14px}
+.mute{color:var(--mute);font-size:.9rem}
+button{font:inherit;cursor:pointer;color:inherit}
+.btn{background:var(--acc);color:var(--on);border:0;border-radius:8px;padding:11px 20px;font-weight:700}
+.btn.alt{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:6px 14px}
+.chip[aria-pressed=true]{background:var(--accbg);border-color:var(--acc);color:var(--acc);font-weight:700}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.time{font-size:1.9rem;font-weight:700;font-variant-numeric:tabular-nums}.time.low{color:var(--bad)}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0 16px}
+.bar i{display:block;height:100%;background:var(--acc);width:100%}.bar.low i{background:var(--bad)}
+.tag{display:inline-block;background:var(--accbg);color:var(--acc);border-radius:6px;padding:1px 9px;font-size:.82rem;font-weight:500}
+.pass{background:var(--bg);border-left:3px solid var(--acc);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;max-height:230px;overflow:auto;font-size:.95rem}
+.pass p{margin:0 0 .6em}mark{background:var(--accbg);color:var(--acc);font-weight:700;padding:0 3px;border-radius:3px}
+.stem{font-size:1.08rem;margin:10px 0 14px}
+.opt{display:flex;gap:12px;width:100%;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;margin-bottom:9px}
+.opt b{min-width:1.3em;color:var(--mute)}.opt:hover{border-color:var(--acc)}
+.opt[aria-pressed=true]{border-color:var(--acc);background:var(--accbg)}.opt[aria-pressed=true] b{color:var(--acc)}
+button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+u{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px}
+.score{font-size:3rem;font-weight:700;line-height:1.1}
+.row{display:grid;grid-template-columns:minmax(0,1fr) 64px;gap:4px 10px;align-items:center;margin-bottom:12px}
+.row .bar{grid-column:1/3;margin:0}.row span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.worst .bar i{background:var(--bad)}
+details{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--card)}
+summary{padding:10px 14px;cursor:pointer}details>div{padding:0 14px 12px}
+.g{color:var(--ok);font-weight:700}.r{color:var(--bad);font-weight:700}
+.note{background:var(--badbg);border-radius:10px;padding:12px 14px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+</style></head><body><main id="app"></main>
+<script>
+const T={PA:'Phát âm',TN:'Trọng âm',NP:'Ngữ pháp (thì, bị động, cấu trúc)',TV:'Từ vựng & cụm từ cố định',DN:'Từ đồng nghĩa',TD:'Từ trái nghĩa',GT:'Giao tiếp',DT:'Điền từ vào đoạn văn',YC:'Đọc hiểu: ý chính & chi tiết',DV:'Đọc hiểu: từ vựng & đại từ',LS:'Tìm lỗi sai',VL:'Viết lại câu',KC:'Kết hợp câu'};
+const P={1:['Living a green lifestyle is becoming increasingly important in today’s world. There are many simple habits we can adopt at home to protect the environment. First, we should always remember to turn off lights and electronic devices when leaving a room. This not only saves electricity (21) ______ also lowers our monthly energy bills. Second, cutting down on single-use plastic is essential. Instead of using plastic bags, we can bring (22) ______ cloth bags when shopping for groceries.','Furthermore, saving water is another key part of living sustainably. Taking shorter showers and fixing leaky faucets can prevent a huge amount of water from being wasted. Many families also choose to buy (23) ______ food, which is grown without harmful chemicals or pesticides. Finally, planting more trees in our gardens or local parks helps absorb carbon dioxide and provides fresh air (24) ______ everyone. By making these small changes in our daily routines, we can (25) ______ a big difference to the future of our planet.'],
+2:['In modern society, both parents often work full-time to support their families. As a result, sharing household chores has become more important than ever. When everyone in the family contributes to housework, no single person feels overburdened or exhausted. While parents usually handle more complex tasks like cooking meals or paying bills, children can easily help with age-appropriate chores such as setting the table, feeding pets, taking out the rubbish, or tidying up their own bedrooms.','Doing housework offers numerous benefits for children. Psychologists suggest that children who regularly do chores develop a strong sense of responsibility and self-reliance. They learn essential life skills like cooking, cleaning, and time management, which will be extremely useful when they grow up and live independently. Moreover, working together on household tasks gives family members valuable time to talk, bond, and understand each other better. It teaches children to appreciate the hard work required to maintain a clean and comfortable home.'],
+3:['<i>Quan Ho</i> singing is a traditional Vietnamese folk music style that originated in the Red River Delta, primarily in Bac Ninh and Bac Giang provinces. In 2009, it was officially recognized by UNESCO as an Intangible Cultural Heritage of Humanity. Historically, <i>Quan Ho</i> was performed during spring festivals, where young men and women from different villages gathered to sing alternating verses to express their feelings and build friendships.','In a traditional <i>Quan Ho</i> performance, female singers, known as <i>liền chị</i>, wear distinctive traditional costumes including multi-layered dresses and large flat palm hats (<i>nón quai thao</i>). Male singers, called <i>liền anh</i>, dress in long tunics, turbans, and carry umbrellas. The singing requires great vocal control and harmony, as traditional <i>Quan Ho</i> is performed without any musical instrument accompaniment. Singers must match the melody and rhythm of their partners’ songs.','Today, local authorities and cultural organizations are making great efforts to preserve <i>Quan Ho</i> singing. Folk clubs have been established in many villages, where older artisans teach young children the traditional melodies and lyrics so that this precious cultural heritage will continue to thrive for generations to come.']};
+const AN='DBABBACCBA'+'CABCABBCAB'+'BACDBBACDB'+'BCABCBBBAA';
+const PR='Chọn từ có phần gạch chân phát âm KHÁC các từ còn lại.',ST='Chọn từ có trọng âm chính KHÁC các từ còn lại.',BL='Chọn đáp án đúng.';
+// [tag, group, stem, options, explanation]
+const D=[
+['PA',0,PR,'<u>tr</u>ash|<u>tr</u>ee|<u>tr</u>uth|<u>cr</u>eate','create đọc /kr/, các từ còn lại đọc /tr/.'],
+['PA',0,PR,'gr<u>o</u>cery|ad<u>o</u>pt|s<u>o</u>cial|m<u>o</u>ment','adopt có “o” đọc /ɒ/, các từ còn lại đọc /əʊ/.'],
+['TN',0,ST,'routine|laundry|household|picnic','routine nhấn âm 2, các từ còn lại nhấn âm 1.'],
+['TN',0,ST,'organic|energy|appliance|performance','energy nhấn âm 1, các từ còn lại nhấn âm 2.'],
+['NP',0,'Look at those dark clouds! It ______ heavily in a few minutes.','will rain|is going to rain|rains|is raining','Dự đoán có căn cứ ở hiện tại → be going to + V.'],
+['TV',0,'My mother usually ______ the cooking, while my father does the heavy lifting in our family.','does|makes|takes|puts','Cụm cố định: do the cooking.'],
+['NP',0,'More and more trees ______ in our neighborhood every spring to make the air cleaner.','plant|are planting|are planted|were planted','Bị động hiện tại đơn (every spring): are planted.'],
+['NP',0,'My parents never allow me ______ out late in the evening on weekdays.','go|going|to go|gone','allow + O + to V.'],
+['NP',0,'Please be quiet! My little sister ______ for her upcoming music competition in the next room.','practices|is practicing|practiced|will practice','“Please be quiet!” → hành động đang diễn ra: hiện tại tiếp diễn.'],
+['TV',0,'Turning off electrical appliances when they are not in use is a simple way to reduce our ______.','carbon footprint|greenhouse effect|global warming|natural resource','Cụm từ: carbon footprint (lượng khí thải các-bon).'],
+['NP',0,'The concert was very exciting, ______ we decided to stay until the very end.','but|or|so|nor','Liên từ chỉ kết quả: so.'],
+['TV',0,'Dividing household chores equally helps strengthen family ______ and teaches children responsibility.','bonds|rules|routines|manners','Cụm từ: family bonds (sự gắn kết gia đình).'],
+['TV',0,'The ______ cheered loudly when the talented singer walked onto the stage and started singing.','judges|audience|viewers|contestants','audience: khán giả tại chỗ.'],
+['NP',0,'Remember ______ your reusable bag when you go to the supermarket this afternoon.','bring|bringing|to bring|brought','remember + to V (nhớ phải làm).'],
+['DN',0,'Chọn từ GẦN NGHĨA nhất với từ gạch chân.<br>Children should be taught to show <u>gratitude</u> to their parents for all their hard work and love.','thankfulness|kindness|honesty|sympathy','gratitude (lòng biết ơn) = thankfulness.'],
+['DN',0,'Chọn từ GẦN NGHĨA nhất với từ gạch chân.<br>Using <u>eco-friendly</u> products is one of the best ways to protect our planet from pollution.','expensive|environmentally harmless|artificial|chemical','eco-friendly = environmentally harmless.'],
+['TD',0,'Chọn từ TRÁI NGHĨA với từ gạch chân.<br>We should <u>reduce</u> the amount of plastic waste we produce every single day.','cut down|increase|lower|reuse','reduce (giảm) >< increase (tăng).'],
+['TD',0,'Chọn từ TRÁI NGHĨA với từ gạch chân.<br>Listening to classical music helps me feel <u>relaxed</u> after a long day at school.','calm|comfortable|stressed|peaceful','relaxed (thư giãn) >< stressed (căng thẳng).'],
+['GT',0,'Nam: “Shall we join the school’s green campaign this Sunday?”<br>Lan: “______”','That’s a great idea!|Yes, I did it yesterday.|You’re welcome.|No, I don’t mind.','Đáp lại lời rủ “Shall we…?” → That’s a great idea!'],
+['GT',0,'Minh: “Which musical instrument do you think I should learn to play?”<br>Hoa: “______”','I bought a new guitar last week.|If I were you, I would choose the piano.|Music is very popular nowadays.|Thank you for your kind words.','Đáp lại câu xin lời khuyên → If I were you, I would…'],
+['DT',1,'Chọn đáp án cho chỗ trống (21).','and|but|or|so','not only … but also …'],
+['DT',1,'Chọn đáp án cho chỗ trống (22).','reusable|reuse|usefully|useless','Cần tính từ đứng trước “cloth bags”: reusable.'],
+['DT',1,'Chọn đáp án cho chỗ trống (23).','artificial|polluted|organic|chemical','organic food: thực phẩm hữu cơ, không dùng hóa chất độc hại.'],
+['DT',1,'Chọn đáp án cho chỗ trống (24).','with|on|at|for','provide something for somebody.'],
+['DT',1,'Chọn đáp án cho chỗ trống (25).','do|make|take|put','Cụm cố định: make a difference.'],
+['YC',2,'What is the main idea of the passage?','How to cook healthy meals for a big family.|The importance and benefits of sharing household chores.|Why children should not do any housework on weekdays.|The difficulties of working full-time in modern society.','Đoạn 1 nói tầm quan trọng của việc chia sẻ việc nhà, đoạn 2 nói lợi ích với trẻ.'],
+['DV',2,'The word “<b>overburdened</b>” in paragraph 1 is closest in meaning to ______.','given too much work to do|feeling very excited and happy|having too much free time|proud of family traditions','overburdened = quá tải = given too much work to do.'],
+['YC',2,'According to paragraph 1, which of the following is NOT mentioned as a chore for children?','Feeding pets|Setting the table|Paying monthly bills|Tidying up their bedrooms','Đoạn 1: paying bills là việc của bố mẹ (parents usually handle … paying bills).'],
+['DV',2,'The word “<b>They</b>” in paragraph 2 refers to ______.','psychologists|parents|benefits|children','“They” thay cho “children” ở câu trước.'],
+['YC',2,'According to the passage, why is doing housework helpful for children’s future?','Because they can earn a lot of pocket money from their parents.|Because they learn essential life skills to live independently later.|Because they do not have to study hard at school anymore.|Because they can become professional psychologists when they grow up.','Đoạn 2: “They learn essential life skills … live independently.”'],
+['YC',3,'What is the passage mainly about?','The history of modern pop music in Vietnam.|<i>Quan Ho</i> singing – a traditional Vietnamese cultural heritage.|How to make traditional palm hats in Bac Ninh province.|Famous musical instruments in the Red River Delta.','Bài giới thiệu nguồn gốc, cách biểu diễn và việc bảo tồn Quan họ.'],
+['YC',3,'When was <i>Quan Ho</i> singing recognized by UNESCO as an Intangible Cultural Heritage of Humanity?','In 1999|In 2005|In 2009|In 2019','Đoạn 1: “In 2009, it was officially recognized by UNESCO…”'],
+['YC',3,'What is special about a traditional <i>Quan Ho</i> singing performance?','It is performed without any musical instruments.|Only male singers are allowed to sing on stage.|It uses electric guitars and modern drums.|Singers must write new songs during the festival.','Đoạn 2: “…performed without any musical instrument accompaniment.”'],
+['DV',3,'The word “<b>preserve</b>” in paragraph 3 is closest in meaning to ______.','destroy|protect|forget|replace','preserve (bảo tồn) = protect.'],
+['YC',3,'How are local communities keeping <i>Quan Ho</i> singing alive today?','By banning modern music in Bac Ninh and Bac Giang.|By selling traditional costumes to foreign tourists.|By setting up folk clubs where artisans teach the younger generation.|By replacing traditional lyrics with English words.','Đoạn 3: “Folk clubs have been established … older artisans teach young children…”'],
+['LS',0,'Chọn phần gạch chân CẦN SỬA.<br>My brother <u>always</u> <u>is</u> responsible for <u>watering</u> the plants <u>in</u> the garden every morning.','always|is|watering|in','Trạng từ tần suất đứng sau to be: is always (không phải always is).'],
+['LS',0,'Chọn phần gạch chân CẦN SỬA.<br>His parents <u>made</u> him <u>to finish</u> all his homework before <u>watching</u> his favorite TV show <u>last night</u>.','made|to finish|watching|last night','make + O + V (bỏ “to”): to finish → finish.'],
+['VL',0,'Chọn câu GẦN NGHĨA nhất với câu: “Volunteers collect plastic bottles on the beach every weekend.”','Plastic bottles collect volunteers on the beach every weekend.|Plastic bottles are collected on the beach by volunteers every weekend.|Plastic bottles were collected on the beach by volunteers every weekend.|Plastic bottles will be collected on the beach by volunteers every weekend.','Bị động hiện tại đơn (every weekend): are collected.'],
+['VL',0,'Chọn câu GẦN NGHĨA nhất với câu: “We have already bought the tickets, and we have a plan to see the live concert tonight.”','We are going to see the live concert tonight.|We will probably buy tickets for the concert tonight.|We saw the live concert with our friends last night.|We don’t want to see the live concert tonight.','Kế hoạch đã sắp xếp (đã mua vé) → be going to + V.'],
+['KC',0,'Chọn câu KẾT HỢP TỐT NHẤT hai câu: “Minh wanted to join the school music club. He practiced playing the guitar every day.”','Minh wanted to join the school music club, so he practiced playing the guitar every day.|Minh wanted to join the school music club, but he practiced playing the guitar every day.|Minh wanted to join the school music club, or he practiced playing the guitar every day.|Minh wanted to join the school music club, nor he practiced playing the guitar every day.','Quan hệ nguyên nhân – kết quả → so.']
+];
+const Q=D.map((d,i)=>({n:i+1,tag:d[0],g:d[1],stem:d[2],o:d[3].split('|'),a:'ABCD'.indexOf(AN[i]),e:d[4]}));
+const app=document.getElementById('app'),$=s=>app.querySelector(s);
+let secs=75,order=[],pos=0,pick={},spent={},dl=0,tm=null,total=0;
+function start(){
+  app.innerHTML='<h1>Đề kiểm tra giữa học kì I – Tiếng Anh 10</h1><div class="card"><p>40 câu trắc nghiệm, mỗi câu 0,25 điểm. Mỗi câu có thời gian riêng; hết giờ thì tự chuyển sang câu tiếp theo (tính là chưa trả lời) và không quay lại được. Đáp án chỉ hiện sau khi nộp bài.</p><p class="mute">Thời gian cho mỗi câu (đề gốc 50 phút ≈ 75 giây/câu):</p><div class="chips" id="ch"></div><button class="btn" id="go">Bắt đầu làm bài</button></div>';
+  $('#ch').innerHTML=[45,60,75,90,120].map(s=>'<button class="chip" data-s="'+s+'" aria-pressed="'+(s==secs)+'">'+s+' giây</button>').join('');
+  $('#ch').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;secs=+b.dataset.s;[...$('#ch').children].forEach(c=>c.setAttribute('aria-pressed',c==b))};
+  $('#go').onclick=()=>begin(Q.map((_,i)=>i));
+}
+function begin(ids){order=ids;pos=0;pick={};spent={};total=ids.length;show()}
+function show(){
+  const q=Q[order[pos]],last=pos==order.length-1;
+  let ps='';
+  if(q.g){ps='<div class="pass">'+P[q.g].map(t=>'<p>'+(q.g==1?t.replace('('+q.n+')','<mark>('+q.n+')</mark>'):t)+'</p>').join('')+'</div>'}
+  app.innerHTML='<div class="card"><div class="top"><span class="mute">Câu '+q.n+' · '+(pos+1)+'/'+order.length+'</span><span class="time" id="t"></span></div><div class="bar" id="b"><i></i></div><span class="tag">'+T[q.tag]+'</span>'+ps+'<div class="stem">'+q.stem+'</div><div id="os">'+q.o.map((o,i)=>'<button class="opt" data-i="'+i+'" aria-pressed="false"><b>'+'ABCD'[i]+'</b><span>'+o+'</span></button>').join('')+'</div><div class="actions"><button class="btn" id="nx">'+(last?'Nộp bài':'Câu tiếp theo')+'</button></div></div>';
+  $('#os').onclick=e=>{const b=e.target.closest('.opt');if(b)choose(+b.dataset.i)};
+  $('#nx').onclick=next;
+  dl=Date.now()+secs*1000;clearInterval(tm);tick();tm=setInterval(tick,200);
+  window.scrollTo(0,0);
+}
+function choose(i){pick[order[pos]]=i;[...document.querySelectorAll('.opt')].forEach((b,k)=>b.setAttribute('aria-pressed',k==i))}
+function tick(){
+  const left=Math.max(0,dl-Date.now()),s=Math.ceil(left/1000),el=$('#t');if(!el)return;
+  el.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+  el.classList.toggle('low',s<=10);$('#b').classList.toggle('low',s<=10);$('#b i').style.width=(left/(secs*10))+'%';
+  if(left<=0)next(true);
+}
+function next(){
+  clearInterval(tm);spent[order[pos]]=Math.min(secs,Math.round((Date.now()-(dl-secs*1000))/1000));
+  if(pos<order.length-1){pos++;show()}else result();
+}
+document.addEventListener('keydown',e=>{
+  if(!$('#os'))return;const k='abcd'.indexOf(e.key.toLowerCase());
+  if(e.key.length==1&&k>-1)choose(k);else if(e.key=='Enter'&&document.activeElement.tagName!='BUTTON'){e.preventDefault();next()}
+});
+function result(){
+  const ids=order,right=ids.filter(i=>pick[i]===Q[i].a),wrong=ids.filter(i=>pick[i]!==Q[i].a),blank=ids.filter(i=>pick[i]===undefined);
+  const st={};ids.forEach(i=>{const t=Q[i].tag;st[t]=st[t]||{t:0,w:0};st[t].t++;if(pick[i]!==Q[i].a)st[t].w++});
+  const arr=Object.entries(st).sort((a,b)=>b[1].w/b[1].t-a[1].w/a[1].t||b[1].w-a[1].w);
+  const bad=arr.filter(x=>x[1].w>0&&x[1].w/x[1].t>=0.5||x[1].w>=2).slice(0,3).map(x=>T[x[0]]);
+  const avg=Math.round(ids.reduce((s,i)=>s+(spent[i]||0),0)/ids.length);
+  app.innerHTML='<h1>Kết quả</h1><div class="card"><div class="score">'+(right.length*0.25).toString().replace('.',',')+'<span class="mute" style="font-size:1.1rem"> / '+(ids.length*0.25).toString().replace('.',',')+' điểm</span></div><p>Đúng '+right.length+'/'+ids.length+' câu · sai '+(wrong.length-blank.length)+' · bỏ trống hoặc hết giờ '+blank.length+' · trung bình '+avg+' giây/câu.</p>'+(wrong.length?'<div class="note"><b>Dạng câu hay sai nhất:</b> '+(bad.length?bad.join('; '):'chưa có dạng nào nổi bật, các lỗi rải rác')+'.</div>':'<div class="note" style="background:var(--okbg)">Đúng tất cả, không có dạng câu nào cần ôn thêm.</div>')+'</div><h2>Thống kê theo dạng câu (sắp xếp theo tỉ lệ sai)</h2><div class="card">'+arr.map((x,i)=>{const r=Math.round(x[1].w/x[1].t*100);return '<div class="row'+(x[1].w&&i<3?' worst':'')+'"><span>'+T[x[0]]+'</span><span>sai '+x[1].w+'/'+x[1].t+'</span><div class="bar"><i style="width:'+r+'%"></i></div></div>'}).join('')+'</div>'+(wrong.length?'<h2>Xem lại '+wrong.length+' câu sai</h2>'+wrong.map(i=>{const q=Q[i],p=pick[i];return '<details><summary>Câu '+q.n+' · '+T[q.tag]+'</summary><div><div class="stem">'+q.stem+'</div><p>Bạn chọn: '+(p===undefined?'<span class="r">không trả lời</span>':'<span class="r">'+'ABCD'[p]+'. '+q.o[p]+'</span>')+'<br>Đáp án đúng: <span class="g">'+'ABCD'[q.a]+'. '+q.o[q.a]+'</span></p><p class="mute">'+q.e+'</p></div></details>'}).join(''):'')+'<div class="actions"><button class="btn" id="again">Làm lại cả đề</button>'+(wrong.length?'<button class="btn alt" id="redo">Chỉ làm lại câu sai</button>':'')+'<button class="btn alt" id="home">Đổi thời gian</button></div>';
+  $('#again').onclick=()=>begin(Q.map((_,i)=>i));if(wrong.length)$('#redo').onclick=()=>begin(wrong);$('#home').onclick=start;window.scrollTo(0,0);
+}
+start();
+</script></body></html>
